@@ -17,6 +17,7 @@ else
     TGT_PATH="${INPUT_TGT_PATH}"
 fi
 
+set +e
 # Run the Python script and capture output
 OUTPUT=$(python3 /app/minio_manager.py \
     --mode "${INPUT_MODE}" \
@@ -32,6 +33,7 @@ EXIT_CODE=$?
 
 # Print the output
 echo "$OUTPUT"
+set -e
 
 # Extract the artifact_path from output and set it as GitHub Action output
 if [ -n "${GITHUB_OUTPUT}" ]; then
