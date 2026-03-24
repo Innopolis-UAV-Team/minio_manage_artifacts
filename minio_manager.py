@@ -129,7 +129,7 @@ def upload_to_minio(args: argparse.Namespace) -> str:
 
     run_mc_command(["mc", "cp", "-r", f"{args.src_path}", f"{(path_alias / tgt_path_trunk).as_posix()}"])
 
-    out_path = (tgt_path_trunk / args.src_path).relative_to(args.bucket).as_posix() # Skip bucket name for output
+    out_path = (tgt_path_trunk / args.src_path.stem).relative_to(args.bucket).as_posix() # Skip bucket name for output
     print(f"\nUpload completed successfully to: {out_path}")
 
     return out_path
