@@ -1,4 +1,4 @@
-FROM minio/mc:latest AS mc-binary
+FROM pgsty/silo:latest AS mc-binary
 
 FROM python:3.11-slim
 
